@@ -1,0 +1,2250 @@
+10/2/24, 1:26 PM
+
+Assignment 1
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+Create a multiple linear regression model for house price dataset
+divide dataset into train and test data while giving it to model
+and predict prices of house.
+
+import pandas as pd
+
+Assignment_1
+
+df = pd.read_csv('kc_house_data.csv' )
+df.shape
+df.info()
+
+<class
+
+"pandas.core.frame.DataFrame' >
+
+RangeIndex: 21613 entries, @ to 21612
+
+Data columns (total
+
+21 columns):
+
+Dtype
+int64
+object
+float64
+int64
+floated
+int64
+int64
+float64
+int64
+inte4
+int64
+int64
+float64
+int64
+int64
+int64
+int64
+float64
+float64
+int64
+int64
+
+# = Column Non-Null Count
+@ id 21613 non-null
+1 date 21613 non-null
+2 price 21613 non-null
+3 bedrooms 21613 non-null
+4 bathrooms 21613 non-null
+5 sqft_living 21613 non-null
+6 sgft_lot 21613 non-null
+7 floors 21613 non-null
+8 waterfront 21613 non-null
+9 view 21613 non-null
+1@ condition 21613 non-null
+11° grade 21613 non-null
+12 sqft_above 21611 non-null
+13 sqft_basement 21613 non-null
+14) yr_built 21613 non-null
+15 yr_renovated 21613 non-null
+16 zipcode 21613 non-null
+17° lat 21613 non-null
+18 long 21613 non-null
+19 sqft_living15 21613 non-null
+28 sqft_loti5 21613 non-null
+dtypes: float64(6), inté4(14), object(1)
+memory usage: 3.5+ MB
+
+print (df[:5])
+
+file:///C:/Users/Mehta/Downloads/Assignment_1 (4).html
+
+1/3
+10/2/24, 1:26 PM
+
+Assignment_1
+
+bedroom
+
+view condition
+
+id date price
+@ 7129300520 20141013T@eeeee = 221900.0
+1 6414100192 20141209Teeee0e 538000.0
+2 5631500400 2015@225Teee008 180000.
+3 2487200875 20141209Teee99e8e 604000.0
+4 1954400510 20150218Tee@eeee 519000.8
+sqft_lot floors waterfront
+8 5658 1.0 12) 13)
+1 7242 .8 Q 8
+2 19000 1.0 8 e
+3 5080 1.8 i) e
+4 8e80 1.8 i2) 8
+sqft_basement yr_built yr_renovated
+Q e 1955 Q
+1 400 1951 1991
+2 i2) 1933 tz)
+3 910 1965 t2)
+4 8 1987 8
+sqft_living15 sqft_loti5
+Q 1340 5650
+£ 1690 7639
+2 2720 8062
+3 1360 5000
+4 1880 7503
+
+WUT Ww li uu
+
+zipcode
+98178
+98125
+98028
+98136
+98074
+
+df.head(1@) # will dispLay all the columns
+
+#select features and target
+
+features = ['bedrooms', 'bathrooms', ‘sqft_living', ‘sqft_lot', 'floors',
+
+target = ‘price’
+X1 = df[features]
+
+yl
+
+df[target ]
+
+df.isnull().sum()
+
+file:///C:/Users/Mehta/Downloads/Assignment_1 (4).html
+
+s bathrooms
+
+We Nw Ww
+
+1.00
+2.25
+1.00
+3.00
+2.00
+
+grade sqft_above \
+
+47.
+47.
+47.
+47.
+47.
+
+7 1180.08
+zi 2170.08
+6 778.8
+7 1658.0
+8 1680.08
+
+lat long \
+5112 -122.257
+7210 -122.319
+7379 -122.233
+5208 -122.393
+6168 -122.045
+
+1188
+2570
+
+778
+1968
+1688
+
+sqft_living \
+
+"zipcode
+
+2/3
+10/2/24, 1:26 PM
+
+id
+
+date
+
+price
+bedrooms
+bathrooms
+sgft_living
+sqft_lot
+floors
+waterfront
+view
+condition
+grade
+sqft_above
+sqft_basement
+yr_built
+yr_renovated
+zipcode
+
+lat
+
+long
+sqft_living15
+sgft_lot15
+dtype: int64
+
+Seoo cv ogo go ©9n eo eT TFC TMVMVTVAVMVSVSO ®
+
+# split dataset into train&test
+
+X_train, X_test, y_train, y_test = train_test_split(X1, y1, test_size=@.2, random_s
+
+#use model
+
+model = LinearRegression()
+#train model
+model.fit(X_train, y_train)
+#test model
+
+y_pred = model.predict(X_test)
+
+score = model.score(X_test, y test)
+print("Model R*2 Score:", score)
+
+Model R*2 Score: @.5152176982630977
+
+new_house = pd.DataFrame({'bedrooms': [2], 'bathrooms': [2.5], 'sqft_living': [600]
+
+Assignment_1
+
+predicted_price = model. predict (new_house)
+print("Predicted Price:", predicted_price[@])
+
+Predicted Price: 121215.61449581385
+
+file:///C:/Users/Mehta/Downloads/Assignment_1 (4).html
+
+3/3
+Assignment 2
+
+Use dataset crash.csv is an accident survivor’s dataset portal for USA
+
+hosted by data.gov. The dataset contains passengers age and speed of vehicle
+(mph) at the time of impact and fate of passengers (1 for survived and @ for
+not survived) after a crash. use logistic regression to decide if the age
+
+and speed can predict the survivability of the passengers.
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.metrics import accuracy_score
+
+df=pd.read_csv(‘accident1.csv')
+df.iloc[:5, :6].head()
+
+Time Day_of_week Age_band_of_driver Sex_of_driver
+
+0 17:02:00 Monday
+1 17:02:00 Monday
+2 17:02:00 Monday
+3 1:06:00 Sunday
+4 1:06:00 Sunday
+
+df.iloc[:5, 6:11].head()
+
+Driving_experience Type_of_vehicle
+
+0 1-2yr Automobile
+1 Above 10yr Public (> 45
+seats)
+
+2 1-2yr — Lorry (41?100Q)
+Public (> 45
+
+3 5-10yr seats)
+4 2-5yr NaN
+
+df.iloc[:5, 10:15].head()
+
+18
+
+31
+
+19
+
+78
+
+73
+
+Male
+
+Male
+Male
+Male
+
+Male
+
+Educational_level Vehicle driver_relation
+
+Above high
+school
+
+Junior high school
+Junior high school
+Junior high school
+
+Junior high school
+
+Employee
+
+Employee
+Employee
+Employee
+
+Employee
+
+Owner_of_vehicle Service_year_of_vehicle Defect_of_vehicle
+
+Owner
+
+Owner
+
+Owner
+
+Governmental
+
+Owner
+
+Above 10yr
+5-10yrs
+NaN
+
+NaN
+
+5-10yrs
+
+No defect
+
+No defect
+
+No defect
+
+No defect
+
+No defect
+Defect_of_vehicle Area_accident_occured Lanes_or_Medians Road_allignment Types_of_Junction
+
+Tangent road
+
+0 No defect Residential areas NaN . .
+with flat terrain
+
+No junction
+
+Undivided Two Tangent road
+
+1 No defect Office areas . .
+way with flat terrain
+
+No junction
+
+2 No defect Recreational areas other NaN No junction
+
+Tangent road
+3 No defect Office areas other — with mild grade Y Shape
+and flat terrain
+
+Tangent road
+
+4 No defect Industrial areas other . .
+with flat terrain
+
+Y Shape
+
+df.iloc[:5, 15:20].head()
+
+Road_surface type Road_surface_conditions Light_conditions Weather_conditions Type_of_collision
+
+Collision with
+
+0 Asphalt roads Dry Daylight Normal — roadside-parked
+vehicles
+. Vehicle with
+h
+
+1 Asphalt roads Dry Daylight Normal verielecellition
+. Collision with
+
+2 Asph D D h N |
+sphalt roads ry aylight orma ieacieidwabjects
+3 Parthcreade Dry Darkness - lights Rlsrerail Vehicle with
+lit vehicle collision
+4 Asphalt roads Dry Darkness - lights Normal Vehicle with
+lit vehicle collision
+
+df.dropna(inplace=True)
+
+x=df[[‘'Age_band_of_driver’, 'Speed' ]]
+y=df[["Survive']]
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=@.3,random_state=0)
+
+model = LogisticRegression()
+model.fit(x_train, y_train)
+
+y_pred = model.predict(x_test)
+
+accuracy = accuracy_score(y_test,y pred)
+print (accuracy)
+
+1.0
+
+D:\Anaconda3\Lib\site-packages\sklearn\utils\validation.py:136@: DataConversionWarning: A colu
+mn-vector y was passed when a 1d array was expected. Please change the shape of y to (n_sample
+s, ), for example using ravel().
+
+y = column_or_id(y, warn=True)
+
+new_data= pd.DataFrame({'Age_band_of_driver’ :[3@], 'Speed':[100]})
+predicted_survival=model.predict(new_data)
+print(f'Predicted survival: {predicted_survival[@]}')
+
+Predicted survival:1
+Assignment 3
+
+Fit the simple linear regression and polynomial linear regression models to
+Salary_positions.csv data. Find which one is more accurately fitting to the
+given data. Also predict the salaries of level 11 and level 12 employees
+
+import pandas as pd
+
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+dp=pd.read_csv{'Position_Salaries.csv')
+dp.head(1@)
+
+Position Level Salary
+
+0 Business Analyst 1 45000
+1 Junior Consultant 2 50000
+2 Senior Consultant 3 60000
+3 Manager 4 80000
+4 Country Manager 5 110000
+5 Region Manager 6 150000
+
+6 Partner 7 200000
+7 Senior Partner 8 300000
+8 C-level 9 500000
+
+9 CEO 10 1000000
+
+x
+y
+
+dp.iloc[:,1:2].values
+dp.iloc[:,-1].values
+
+print (x)
+print(y)
+
+[ 45006 580608 690808 8eee8 118008 150088 2e8088 3e8808 See8e8e
+1ee9000]
+
+linreg = LinearRegression()
+linreg. fit(x,y)
+polyreg = PolynomialFeatures(degree =6)
+Xpoly = polyreg.fit_transform(x)
+
+linreg2 = LinearRegression()
+linreg2.fit(Xpoly, y)
+
+vy LinearRegression
+
+LinearRegression()
+
+plt.scatter(x,y,color ='red')
+
+plt.plot(x,linreg.predict(x),color = 'blue’)
+
+plt.plot(x, linreg2.predict(polyreg.fit_transform(x)),color = 'green')
+plt.title('Linear/Polynomial Regression’ )
+
+plt.xlabel('Position Level')
+
+plt.ylabel('Salary' )
+
+plt.show()
+
+1e6 Linear/Polynomial Regression
+
+10.4
+
+0.8 5
+
+0.6
+
+Salary
+
+0.4 5
+
+0.2 7
+
+0.0 5
+
+2 4 6 8 10
+Position Level
+
+print("Linear reg.: level 11 =>",linreg.predict([[11]])) #preidect salary for Level 11
+print("Polynomial reg.: level 11 =>",linreg2.predict(polyreg.fit_transform([[11]]))) #preidec
+
+Result using Linear reg.: level 11 => [694333.33333333]
+Result using Polynomial reg.: level 11 => [2129833.3333695]
+
+print("Linear reg.: level 12 =>",linreg.predict([[12]])) #preidect salary for Level 12
+print("Polynomial reg.: level 12 =>",linreg2.predict(polyreg.fit_transform([[12]]))} #preidec
+
+Linear reg.: level 12 => [775212.12121212]
+Polynomial reg.: level 12 => [4471530.30316371]
+Assignment 4
+
+Write a python program to categorize the given news text into one of the
+available 2@ categories of news groups, using multinomial Naive Bayes
+machine learning model.
+
+# Import required Libraries
+
+from sklearn.datasets import fetch_2@newsgroups
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+from sklearn.metrics import accuracy_score
+
+from sklearn.model_selection import train_test_split
+
+# Step 1: Load the 20 Newsgroups dataset
+data = fetch_2@newsgroups(subset='all')
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(data.data)
+
+X_train, X_test, y_train, y_test = train_test_split(X, data.target, test_size=@.25, random_st
+
+model = MultinomialNB()
+model. fit(X_train, y train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f"\nAccuracy: {accuracy: .4f}")
+
+Accuracy: 0.8470
+
+new_text = ["The space shuttle was launched successfully." ]
+new_text_transformed = vectorizer.transform(new_text)
+
+predicted_category = model.predict(new_text_transformed)
+print(f"\nPredicted category: {data.target_names|[predicted_category[@]]}")
+
+Predicted category: sci.space
+
+new_text = ["A south movie hits 3@@cr in first day boxoffice." ]
+new_text_transformed = vectorizer.transform(new_text)
+
+predicted_category = model.predict(new_text_transformed)
+print(f"\nPredicted category: {data.target_names[predicted_category[@]]}")
+
+Predicted category: talk.politics.misc
+BWNHReR ®
+
+BWNEHR ®
+
+Assignment 5
+
+Implement Ridge Regression, Lasso regression, ElasticNet model using boston_houses.csv and take only
+‘RM’ and ‘Price’ of the houses. divide the data as training and testing data. Fit line using Ridge regression
+
+and to find price of a house if it contains 5 rooms. and compare results.
+
+import pandas as pd
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.metrics import mean_squared_error, r2_score
+
+boston_data = pd.read_csv('BostonHousing.csv' )
+
+print (boston_data[ :5])
+
+crim zn indus chas nox rm = age dis rad tax ptratio \
+@.00@632 18.0 2.31 @ @.538 6.575 65.2 4.0900 1 296 15.3
+@.@2731 8.0 7.07 @ @.469 6.421 78.9 4.9671 2 242 17.8
+@.02729 8.0 7.07 @ @.469 7.185 61.1 4.9671 2 242 17.8
+@.03237 8.0 2.18 @ 8.458 6.998 45.8 6.0622 3 222 18.7
+@.@6905 8.0 2.18 @ @.458 7.147 54.2 6.0622 3 222 18.7
+
+b Ilstat medv
+396.99 4.98 24.0
+396.99 9.14 21.6
+392.83 4.03 34.7
+394.63 2.94 33.4
+396.99 5.33 36.2
+
+data = boston_data[[‘rm', 'medv']]
+data = data.dropna()
+
+X = data[['rm']]
+y = data['medv']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+ridge_model = Ridge(alpha=0.1)
+lasso_model = Lasso(alpha=@.2)
+elastic_net_model = ElasticNet(alpha=0.1, 11_ratio=0.5)
+
+ridge_model.fit(X_train, y_train)
+lasso_model.fit(X_train, y_train)
+elastic_net_model.fit(X_train, y_train)
+
+rooms = pd.DataFrame([[5]], columns=['rm'])
+ridge price = ridge _model.predict(rooms) [0]
+lasso_price = lasso _model.predict(rooms)[@]
+elastic_net_price = elastic_net_model.predict(rooms) [0]
+
+print(f"Predicted price of a house with 5 rooms:")
+print(f"Ridge Regression: {ridge _price}")
+print(f"Lasso Regression: {lasso_price}")
+print(f"Elastic Net: {elastic_net_price}")
+Predicted price of a house with 5 rooms:
+Ridge Regression: 10.50124974188882
+Lasso Regression: 11.01936822819962
+Elastic Net: 11.728463886026873
+
+y_pred_ridge = ridge model.predict(X_test)
+y_pred_lasso = lasso _model.predict(X_test)
+y_pred_elastic_net = elastic_net_model.predict(X_test)
+
+plt.plot(X_test, y_pred_ridge, color="blue’, linewidth=2, label='Ridge Regression' )
+plt.plot(X_test, y_pred_lasso, color='red', linewidth=2, label='Lasso Regression’)
+plt.plot(X_test, y_pred_elastic_net, color='‘green', linewidth=2, label='Elastic Net')
+
+plt.xlabel('Number of Rooms’)
+plt.ylabel('Price')
+plt.title('Regression Model Predictions’)
+
+plt.legend()
+plt.show()
+Regression Model Predictions
+40 + ; :
+—— Ridge Regression
+—— Lasso Regression
+—— Elastic Net
+30-7
+ay 20
+M
+&
+10 5
+a] =
+
+4 5 6 7 8
+Number of Rooms
+Assignment 6
+
+Write a python program to Implement Decision Tree classifier model on Data
+which is extracted from images that were taken from genuine and forged
+banknote-like specimens. refer UCI dataset
+https://archive.ics.uci.edu/dataset/267/banknote+authentication)
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.metrics import accuracy_score,confusion_matrix, classification_report
+from sklearn.tree import DecisionTreeClassifier
+
+import pandas as pd
+
+url = “https://archive.ics.uci.edu/ml/machine-learning-databases/@0267/data_banknote_authentii
+columns=[ ‘variance’, 'skewness', ‘curtosis', entropy’, ‘class’ ]
+
+data=pd.read_csv(url, names=columns)
+
+print (data[:5])
+
+variance skewness curtosis entropy class
+
+i2) 3.62160 8.6661 -2.8073 -@.44699 i)
+1 4.54598 8.1674 -2.4586 -1.46210 Q
+2 3.86600 -2.6383 1.9242 0.10645 4)
+3 3.45660 9.5228 -4.0112 -3.594408 i)
+4 6.32924 ~4.4552 4.5718 -@.98880 is)
+X = data.drop('class', axis=1)
+y = data[‘class']
+
+x_train,x_test,y_train, y_test=train_test_split(X,y,test_size=0.3,random_state=42)
+model=DecisionTreeClassifier(random_state=42)
+model. fit(x_train, y_train)
+
+y_pred=model. predict(x_test)
+
+accuracy=accuracy_score(y_test,y_ pred)
+print(f'Acurracy :{accuracy: .2f}')
+
+Acurracy :6.98
+
+print(classification_report(y_test, y_pred))
+
+precision recall fi1-score support
+
+i) Q.97 8.99 8.98 229
+
+a! 8.99 8.97 8.98 183
+
+accuracy 6.98 412
+macro avg 0.98 8.98 8.98 412
+weighted avg 8.98 8.98 8.98 412
+
+print("Confusion Matrix:")
+print (confusion_matrix(y_test, y_pred))
+
+Confusion Matrix:
+[[227 2]
+[ 6 177]]
+In
+
+35|: # [Optional]
+import seaborn as sns
+import matplotlib.pyplot as plt
+cm = confusion_matrix(y_test, y_pred)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Forged', 'Genuine'],
+yticklabels=['Forged', 'Genuine'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual' )
+plt.title('Confusion Matrix")
+plt.show()
+
+Confusion Matrix
+
+225
+
+200
+
+175
+
+Forged
+
+150
+
+125
+
+Actual
+
+- 100
+
+- 75
+
+Genuine
+
+|
+Forged Genuine
+Predicted
+
+In [ ]:
+Assignment 7
+
+Classify the iris flowers dataset using SVM and find out the flower type
+depending on the given input data like sepal length, sepal width, petal
+
+length and petal width Find accuracy of all SVM kernels.
+
+import pandas as pd
+import numpy
+
+from
+from
+from
+from
+from
+
+iris
+
+X = iris.data
+
+sklearn.
+sklearn.
+sklearn.
+
+sklearn
+sklearn
+
+as np
+model_selection import train_test_split
+preprocessing import StandardScaler
+
+svm import SVC
+
+-metrics import accuracy_score
+
+import datasets
+
+= datasets.load_iris()
+
+y = iris.target
+print (X)
+print(y)
+ORPARPArRPN HE BN wOWoOoO Pp wD
+
+wo RF © PF
+NW w wwe wesw
+.
+
+NVeonwwn uum wo f
+
+ao
+
+Bu
+
+3.4
+3.2
+3.1
+3.4
+4.1
+4.2
+3.1
+
+.
+
+Ou N Ww
+PRPPPP PPP PHP PPP EP PEEP EPP P EPP EP PEEP E EPP PPP PPP EPP EP PEPE EB
+
+ay
+i
+
+WRN NM WwW ~I N oO
+
+EERE
+wou sl
+
+NO
+.
+oo
+
+2.8
+3.3
+2.4
+2.9
+2.7
+
+Wu bu BAB uw Bb Bb
+
+wn un BwWuNrP SH
+
+nF OMWWwWWwWunw pwWrhYo sun uATseEU AA ~
+
+Be
+Ww
+
+pay
+Bs
+PPPPRPPRPRrRPRPRPPPRPOeGATTASCASTAGTATVIFEGCSTe TTT STSFFTVTP TSF SGT TF SFI GCe gegeq FTV TVTST TSF GFF eee #2842 ¥8E 8 OF
+
+aor S&S
+Vwonwyua
+SomnhPrPwrRreuo Onowaanan nr
+
+couwmw ws
+
+aoreuuwm naw sl
+
+“aN up ON DOP UNYNN WHO DM wWDP OWN PNY OD
+
+2.2
+2.9
+2.9
+3.1
+
+2.7
+2.2
+2.5
+3.2
+2.8
+2.5
+2.8
+2.9
+3.
+
+2.8
+3.
+
+2.9
+2.6
+2.4
+2.4
+2.7
+2.7
+3.
+
+3.4
+3.1
+2.3
+3.
+
+2.5
+2.6
+
+2.6
+2.3
+2'f
+3.
+
+2.9
+2.9
+2.5
+2.8
+3.3
+2.7
+3.
+
+2.9
+3.
+
+2.5
+2.9
+2.5
+3.6
+3.2
+2.7
+3.
+
+2.5
+2.8
+3.2
+3.
+
+3.8
+2.6
+2.2
+3.2
+2.8
+
+AY UIAAVATAANATRADAR UTADA aAWRARAWRRARRARRAYWUUW RRR RRR AWA RR AWARE
+
+wo
+
+ohW ws Ww owounrFuwm sf om A
+
+PSN UMN PrP OY OW
+
+WN NN W a
+
+B
+
+WwW rPrPoOoOWwWwuUnnoame
+
+on uw
+
+~
+
+NNPNNBRPNNNNPNNPRPBENNPNBRPNP RP RRP BBB PPB PRP PPP PREP PEEP EPP PPP PPP Pee PP
+[72% 2.8 GFR, ]
+
+[6.3 2.7 4.9 1.8]
+
+[6.7 3.3 5.7 2.1]
+
+[7.2 3.2 6. 1.8]
+
+[6.2 2.8 4.8 1.8]
+
+[6.1 3. 4.9 1.8]
+
+[6.4 2.8 5.6 2.1]
+
+[7.2 3. 5.8 1.6]
+
+[7.4 2.8 6.1 1.9]
+
+[7.9 3.8 6.4 2. ]
+
+[6.4 2.8 5.6 2.2]
+
+[6.3 2.8 5.1 1.5]
+
+[6.1 2.6 5.6 1.4]
+
+[7.7 3. 6.1 2.3]
+
+[6.3 3.4 5.6 2.4]
+
+[6.4 3.1 5.5 1.8]
+
+[6. 3. 4.81.8]
+
+[6.9 3.1 5.4 2.1]
+
+[6.7 3.1 5.6 2.4]
+
+[6.9 3.1 5.1 2.3]
+
+[5.8 2.7 5.11.9]
+
+[6.8 3.2 5.9 2.3]
+
+[6.7 3.3 5.7 2.5]
+
+[6.7 3. 5.2 2.3]
+
+[6.3 2.55. 1.9]
+
+[6.5 3. 5.22. ]
+
+[6.2 3.4 5.4 2.3]
+
+[5.9 3. 5.1 1.8]]
+
+[9288 FCH8ACGCHGHAHHHGAGHHGHHBHHECHGHHBHHBBBAHED
+e9e¢900000008€0111111111111111111111111
+7 es es a WP Oc OB sR Rs Bs a
+2222222222222222222222222222222222222
+2e2]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=@.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler. fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+kernels = ['linear’, ‘poly’, 'rbf', ‘sigmoid’ ]
+accuracy_scores = {}
+
+for kernel in kernels:
+svm = SVC(kernel=kernel)
+svm.fit(X_train, y train)
+y_pred = svm.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+accuracy_scores[kernel] = accuracy
+
+print(f"Accuracy with {kernel} kernel: {accuracy: .2f}")
+
+Accuracy with linear kernel: 0.97
+Accuracy with poly kernel: @.97
+Accuracy with rbf kernel: 1.00
+Accuracy with sigmoid kernel: 8.90
+
+new_flower = np.array([[5.1, 3.5, 1.4, @.2]])
+new_flower_scaled = scaler.transform(new_flower)
+
+best_kernel = max(accuracy_scores)
+best_svm = SVC(kernel=best_kernel)
+best_svm.fit(X_train, y_train)
+flower_type = best_svm.predict(new_flower_scaled)
+
+flower_names = {@: "Setosa", 1: "Versicolor", 2: "Virginica"}
+print(f"The new flower is predicted to be: {flower_names[flower_type[9]]}")
+
+The new flower is predicted to be: Setosa
+bBwWN Fr ®
+
+PWN er ©
+
+Assignment 8
+
+Create KNN model on Indian diabetes patient’s database and predict whether a
+new patient is diabetic (1) or not (@). Find optimal value of K.
+
+import pandas as pd
+
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+import matplotlib.pyplot as plt
+
+ds = pd.read_csv(‘diabetes.csv')
+print(ds.head())
+
+# Ensure all columns are numeric and handle missing values
+ds = ds.apply(pd.to_numeric, errors='coerce').dropna()
+
+# Split the data into features (X) and target (y)
+X = ds.drop(‘Outcome', axis=1)
+y = ds[ ‘Outcome’ ]
+
+Pregnancies Glucose BloodPressure SkinThickness Insulin BMI \
+
+6 148 72 35 @ 33.6
+1 85 66 29 @ 26.6
+8 183 64 ts) @ 23.3
+1 89 66 23 94 28.1
+8 137 4@ 35 168 43.1
+
+DiabetesPedigreeFunction Age Outcome
+
+@.627 58 1
+6.351 31 (7)
+8.672 32 1
+8.167 21 t]
+2.288 33 1
+
+# Split the dataset into training and testing sets (80% training, 20% testing)
+X_train, X_test, y_ train, y_test = train_test_split(X, y, test_size=@.2, random_state=42)
+
+# Standardize the features to ensure equal weighting
+scaler = StandardScaler()
+
+X_train = scaler. fit_transform(X_train)
+
+X_test = scaler.transform(X_test)
+
+# Find the optimal K by evaluating accuracy for different values of K
+k_values = range(1, 21)
+accuracy_scores = []
+
+for k in k_values:
+knn = KNeighborsClassifier(n_neighbors=k)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+accuracy_scores.append(accuracy)
+# Determine the optimal value of K based on accuracy
+optimal_k = np.argmax(accuracy_scores) + 1
+print(f'The optimal value of K is: {optimal_k}')
+
+# Visualize the accuracy for different values of K
+plt.plot(k_values, accuracy_scores, marker='‘o')
+plt.xlabel('Number of Neighbors K')
+plt.ylabel('Accuracy Score')
+
+plt.title('Accuracy Scores for Different K Values’)
+plt.show()
+
+The optimal value of K is: 18
+Accuracy Scores for Different K Values
+
+0.76 7
+
+0.74 -
+
+0.72 5
+
+0.70 4
+
+0.68 5
+
+Accuracy Score
+
+0.66 5
+
+0.64 4
+
+0.62 +
+
+T T T T T T
+2.5 5.0 7.5 10.0 12.5 15.0 17.5 20.0
+Number of Neighbors K
+
+# Train the final KNN model with the optimal K and evaluate its accuracy
+
+knn = KNeighborsClassifier (n_neighbors=optimal_k)
+
+knn.fit(X_train, y_train)
+
+y_pred = knn.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f'Accuracy of the KNN model with optimal K ({optimal_k}): {accuracy: .2f}')
+
+Accuracy of the KNN model with optimal K (18): @.76
+
+# Predict whether a new patient is diabetic (1) or not (@)
+
+# Sample data for a new patient: [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,
+newpatient = np.array([[6, 148, 72, 35, @, 33.6, @.627, 50]]) # Example new patient
+new_patient_scaled = scaler.transform(newpatient)
+
+prediction = knn.predict(new_patient_scaled)
+
+# Output the prediction result
+if prediction[@] == 1:
+
+print("The new patient is diabetic.")
+else:
+
+print("The new patient is non-diabetic.")
+
+The new patient is diabetic.
+Assignment 9
+
+Implement Non-linear regression model (Decision Tree,SVM,KNN)to predict the
+consumption of petrol use petrolconsumption
+
+dataset. (https: //www.kaggle.com/code/ajinkyaa/linear-regression-petrol-
+consumption)
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+
+from sklearn.svm import SVR
+
+from sklearn.neighbors import KNeighborsRegressor
+
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset
+df = pd.read_csv('petrol_consumption.csv')
+
+# Display the first 5 rows of the dataset
+df. head()
+
+Petrol tax Average income Paved Highways Population_Driver_licence(%) Petrol_Consumption
+
+0 9.0 3571 1976 0.525 541
+1 9.0 4092 1250 0.572 524
+2 9.0 3865 1586 0.580 561
+2 75 4870 2351 0.529 414
+4 8.0 4399 431 0.544 410
+
+print("Missing values in dataset:\n", df.isnull().sum())
+df.dropna(inplace=True)
+
+Missing values in dataset:
+Petrol_tax (7)
+Average_income
+Paved_Highways
+
+Population Driver_licence(%)
+Petrol Consumption
+
+dtype: int64
+
+o2o oo
+
+# Split the data into features (X) and target (y)
+X = df.drop('Petrol_Consumption', axis=1) # Independent variables
+y = df['Petrol_Consumption'] # Dependent variable
+
+# Split the data into training and testing sets (70% training, 30% testing)
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+# Standardize the features for models that require scaling (SVM and KNN)
+scaler = StandardScaler()
+
+x_train_scaled = scaler.fit_transform(x_train)
+
+x_test_scaled = scaler.transform(x_test)
+# Implement Decision Tree Regressor
+
+dt_model = DecisionTreeRegressor(random_state=23)
+dt_model.fit(x_train, y_train)
+
+y_pred_dt = dt_model.predict(x_test)
+
+# Implement Support Vector Regressor (SVM)
+svm_model = SVR(kernel='rbf')
+svm_model.fit(x_train_scaled, y_train)
+y_pred_svm = svm_model.predict(x_test_scaled)
+
+# ImpLement K-Nearest Neighbors Regressor (KNN)
+knn_model = KNeighborsRegressor (n_neighbors=9)
+knn_model.fit(x_train_scaled, y_train)
+y_pred_knn = knn_model.predict(x_test_scaled)
+
+# Evaluate the models using R*2 score
+
+print("Decision Tree R‘2:", r2_score(y_test, y_pred_dt))
+print("SVM R“2:", r2_score(y_test, y_pred_svm))
+print("KNN R*2:", r2_score(y_test, y_pred_knn))
+
+Decision Tree R*2: @.0260877518@8645865
+SVM R*2: @.004135688749351107
+KNN R*2: @.3602367676205901
+
+# Evaluate the models using Mean Squared Error (MSE)
+print("Decision Tree MSE:", mean_squared_error(y_test, y_pred_dt))
+print("SVM MSE:", mean_squared_error(y_test, y_pred_svm))
+print("KNN MSE:", mean_squared_error(y_test, y_pred_knn))
+
+Decision Tree MSE: 5064.066666666667
+SVM MSE: 5178.211158432618
+KNN MSE: 3326.586831275721
+Assignment 10
+
+Take iris flower dataset and reduce 4D data to 2D data using PCA. Then train
+
+the model and predict new flower with given measurements
+
+import pandas as pd
+
+import numpy as np
+
+from sklearn import datasets
+
+from sklearn.decomposition import PCA
+
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+iris = datasets.load_iris()
+X=iris.data
+y=iris.target
+
+# Show a brief summary of the dataset
+print(f"Feature names: {iris.feature_names}")
+print(f"Class labels: {iris.target_names}")
+print(f"First 5 samples: \n{X[:5]}")
+
+Feature names: ['sepal length (cm)', '‘sepal width (cm)', ‘petal length (cm)',
+
+m)*]
+
+Class labels: ['setosa' ‘versicolor’ ‘virginica’ ]
+
+First 5 samples:
+
+[[5.1 3.5 1.4 @.2]
+[4.9 3. 1.4 @.2]
+[4.7 3.2 1.3 6.2]
+[4.6 3.1 1.5 @.2]
+[5. 3.6 1.4 @.2]]
+
+pca = PCA(n_components=2)
+X_pea = pca.fit_transform(X)
+
+"petal width (c
+
+x_train,x_test,y_train,y test = train_test_split(X_pca,y,test_size=0.3,random_state=42)
+
+knn= KNeighborsClassifier (n_neighbors=3)
+knn.fit(x_train, y_train)
+
+y_pred=knn.predict(x_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy of the KNN classifier after PCA: {accuracy:.2f}')
+
+Accuracy of the KNN classifier after PCA: 1.00
+# Predict for a new flower measurement
+
+#(Example: Sepal Length, Sepal width, Petal Length, Petal width)
+new_measurement = np.array([[1.1, 5.5, 5.4, 1.2]])
+
+# Apply PCA transformation on the new measurement to reduce it to 2D
+new_measurement_pca = pca.transform(new_measurement )
+
+# Predict the species using the trained KNN model
+predicted_species = knn.predict(new_measurement_pca)
+print(f'The predicted species is: {iris.target_names[predicted_species ][@]}')
+
+The predicted species is: setosa
+Assignment 11
+
+Use K-means clustering model and classify the employees into various income
+groups or clusters. Preprocess data if require (i.e. drop missing or null
+values). Use elbow method and Silhouette Score to find value of k.
+
+import pandas as pd
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from sklearn.cluster import KMeans
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score
+
+df = pd.read_csv('Employee_ Salary_Dataset.csv')
+df.head()
+
+ID Experience_Years Age Gender Salary
+
+Oo 1 5 28 Female 250000
+1 2 1 21 Male 50000
+2 3 3 23 Female 170000
+3 4 2 22 Male 25000
+4 5 1 17 Male 10000
+
+data_clean = df.dropna()
+features = data_clean[['Salary']]
+
+scaler = StandardScaler()
+features_scaled = scaler.fit_transform(features)
+
+wess = []
+
+for k in range(1, 11):
+kmeans = KMeans(n_clusters=k, random_state=42)
+kmeans.fit(features_scaled)
+wcss.append(kmeans. inertia_)
+
+plt.figure(figsize=(8, 5))
+plt.plot(range(1, 11), wcss, marker='o')
+plt.title('Elbow Method for Optimal k')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')
+
+plt.show()
+Elbow Method for Optimal k
+
+oo 7
+
+30 5
+
+2575
+
+20>
+
+WCS55S
+
+15 +
+
+10:5
+
+Number of clusters
+
+silhouette_scores = []
+
+for k in range(2, 11):
+kmeans = KMeans(n_clusters=k, random_state=42)
+labels = kmeans.fit_predict(features scaled)
+silhouette_avg = silhouette_score(features_scaled, labels)
+silhouette_scores.append(silhouette_avg)
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(range(2, 11), silhouette_scores, marker='o')
+plt.title('Silhouette Scores for Different k')
+plt.xlabel('Number of clusters‘)
+plt.ylabel('Silhouette Score’)
+
+plt.show()
+
+8 10
+
+Silhouette Scores for Different k
+
+0.86 5
+
+0.84 +
+
+0.82 5
+
+0.80 +
+
+0.78 4
+
+Silhouette Score
+
+0.76 4
+
+0.74 5
+
+0.72 5
+
+2 3 4 5 6
+Number of clusters
+
+k = 3
+kmeans = KMeans(n_clusters=k, random_state=42)
+df['Cluster'] = kmeans.fit_predict(features_scaled)
+
+# Step 6: Display clustered data
+print(df[['Salary', ‘Cluster']])
+
+7
+
+10
+
+Salary Cluster
+
+Q 250080 (7)
+1 50080 ()
+2 170008 (2)
+3 25008 (2)
+4 16880 (7)
+5 5001000 2
+6 8ee0eee (2)
+7 9080 (7)
+8 61500 (]
+9 650080 (2)
+18 250000 (7)
+11 = 14e@e@600 Q
+12 6@@0e5e 2
+13 220100 (]
+14 7500 Q
+15 87880 Q
+16 930080 ()
+17 79ee@e088 1
+18 15880 (2)
+19 330000 (2)
+20 6578000 2
+21 25008 (2)
+22 6845000 2
+23 6080 (7)
+24 89ee (2)
+25 20008 (2)
+26 3000 (7)
+27 1ee980e88 1
+28 Seeeeee 2
+29 61¢@ (2)
+30 8e90e (2)
+31 980008 (2)
+32 15499008 (2)
+33 = 9380088 1
+34 =©76e0e88 1
+
+D: \Anaconda3\Lib\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known t
+o have a memory leak on Windows with MKL, when there are less chunks than available threads. Y
+ou can avoid it by setting the environment variable OMP_NUM_THREADS=1.
+
+warnings .warn(
+Assignment 12
+
+The data set refers to clients of a wholesale distributor. It includes the
+annual spending in monetary units on diverse product categories. Using data
+Wholesale customer dataset compute agglomerative clustering to find out
+annual spending clients in the same region.
+
+https://archive.ics.uci.edu/dataset/292/wholesale+customers
+
+import pandas as pd
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+
+# Load the dataset
+
+url = "Wholesalecustomersdata.csv"
+data = pd.read_csv(url)
+print("Original Dataset:")
+
+print (data.head())
+
+Original Dataset:
+Channel Region Fresh Milk Grocery Frozen Detergents_Paper Delicassen
+
+i) 2 3 12669 9656 7561 214 2674 1338
+1 2 3 7857 9810 9568 1762 3293 1776
+2 2 3 6353 8808 7684 2405 3516 7844
+3 ie 3 13265 1196 4221 6404 507 1788
+4 2 3 22615 5410 7198 3915 1777 5185
+
+# Drop ‘Channel’ and ‘Region’ as they're categorical and not needed for clustering
+data = data.drop(columns=['Channel', 'Region'])
+
+# Standardize the data for clustering
+
+scaler = StandardScaler()
+
+data_scaled = scaler.fit_transform(data)
+
+print("Scaled Data:")
+
+print(data_scaled[:5]) # Show first 5 rows of scaled data
+
+Scaled Data:
+
+[[ @.05293319 @.52356777 -@.04111489 -@.58936716 -@.04356873 -@.06633906]
+[-@.39130197 @.54445767 @.17631835 -6.27013618 6.08640684 @.68915105]
+[-8.44702926 @.40853771 -@.0281571 -@.13753572 @6.13323164 2.24329255]
+[ @.10011141 -@.62401993 -@.3929769 @.6871443 -@.49858822 ©.09341105]
+[ @.84023948 -@.0@5239645 -@.07935618 0.17385884 -@.23191782 1.29934689]]
+
+# Perform Agglomerative Clustering (Hierarchical Clustering - Bottom-Up Approach)
+n_clusters = 5
+
+agg_clustering = AgglomerativeClustering(n_clusters=n_clusters)
+
+data['Cluster'] = agg clustering. fit_predict(data_scaled)
+
+# Visualize the clusters using a pairplot
+
+plt.figure(figsize=(14, 10), dpi=10@)
+
+sns.pairplot(data, hue='Cluster', palette='Set2', markers=["o", "s", "D", "4", "v"])
+plt.suptitle('Pairwise Clustering of Wholesale Customers’, y=1.92)
+plt.tight_layout() # Adjust Layout to prevent overLaps
+
+plt.show()
+<Figure size 1400x1060 with @ Axes>
+
+Pairwise Clustering of Wholesale Customers
+
+e ¢ * ° +
+1ooo00
+50000 * * * * *
+* ° * *
+a eoo00 3 wee i o
+doooo Pa = a . * & |
+° te aeyre * 2 { o
+20000 ” = - os # 1 +
+"BR LR Ls,
+o . “ ad é . | i
+® . . ® =
+eo000
+. . . . *
+., 5 . . .
+~ 40000 = . « + * 7 * *
+= + o%0 * +
+: Fe ao*s é
+20000 > | * * 4
+5
+° oy \ = ° * a * 5 | oF
+4 . . *
+80000
+. . o .
+= 69000 , *. 2 *.
+3 . * . .
+§ 40000 5 ae . < e ‘ 4 oy
+20000 +. + “+. ‘ '. | Ben, Custer
++
+* . 3 A * 0
+o ‘* & * ¥ 1 & #1
+= Te
+eoo00 ¢ ° ° Ps ‘ 1 3
++ «
+50000
+40000
+i. * * ** = *
+3 30000
+rd
+rn te a ‘ #3 4 <"
+e000 ie te eo: a 4
+see _@ gate ™ FS . *
+o|_ bane ae." ise... Seah? . oe
+mong j . ." a ill:
+& 30000
+§ 20000 * ‘ . a 5 te
+e : &.
+% wooo .
+* Lo ty * -
+a ae ee . . pe * = | on *
+so000 4
+40000
+§ 30000 4
+E |
+8
+= 20000 7
+4 o* + » * ee 3 $ a
+10000
+. . . os § . »* + o®
+fi Bites * fae % © aoe ig i= a J
+
+0 soocg looo00 50000 9 s0000 lodoDG Q
+Fresh Milk
+
+s0000 lpecoO
+
+Grocery Frozen
+
+# Analyze the characteristics of each cluster
+cluster_summary = data.groupby('Cluster' ).mean()
+
+print("Cluster Summary (mean annual spending per category):
+
+cluster_summary .head()
+
+Cluster Summary (mean annual spending per category):
+
+Fresh Milk Grocery Frozen
+Cluster
+0 5794241830 9419.888889 13761.738562 1461.764706
+1 25603.000000 43460.600000 61472.200000  2636.000000
+2 27256278846 4914384615 5931.461538  6277.769231
+3 36847.000000 43950.000000 20170.000000 36534.000000
+4 7876.254237 =1902.627119 2534.536723 = 2403.378531
+
+@ 20000 40000 50000 Qo
+
+~
+
+Detergents_Paper
+
+5913.379085
+29974.200000
+1184.971154
+239.000000
+
+507.135593
+
+20000 40000 60000 9
+Detergents Paper
+
+—————
+20000 40000
+Delicassen
+
+Delicassen
+
+1577.607843
+2708.800000
+2272.942308
+47943.000000
+
+744.045198
+Assignment 13
+
+Use Apriori algorithm on groceries dataset to find which items are brought
+together.
+Use minimum support =@.25
+
+!pip install mlxtend
+
+import pandas as pd
+
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori
+
+from mlxtend.frequent_patterns import association_rules
+
+# Load the dataset
+df = pd.read_csv('GroceryStoreDataSet.csv')
+print("Dataset Head:")
+
+print (df)
+
+# Check the column names of the DataFrame
+
+print (df.columns)
+Dataset Head:
+
+MILK, BREAD, BISCUIT
+
+Q BREAD, MILK, BISCUIT, CORNFLAKES
+1 BREAD, TEA, BOURNVITA
+2 JAM, MAGGI , BREAD, MILK
+3 MAGGI, TEA, BISCUIT
+a BREAD, TEA, BOURNVITA
+5 MAGGI, TEA, CORNFLAKES
+6 MAGGI , BREAD, TEA, BISCUIT
+7 JAM,MAGGI, BREAD, TEA
+8 BREAD, MILK
+9 COFFEE,COCK,BISCUIT,CORNFLAKES
+1@ COFFEE,COCK,BISCUIT,CORNFLAKES
+a COFFEE, SUGER, BOURNVITA
+12 BREAD, COFFEE, COCK
+13 BREAD, SUGER, BISCUIT
+14 COFFEE,SUGER,CORNFLAKES
+15 BREAD, SUGER, BOURNVITA
+16 BREAD, COFFEE ,SUGER
+17 BREAD, COFFEE, SUGER
+18 TEA,MILK, COFFEE, CORNFLAKES
+
+Index([‘MILK,BREAD,BISCUIT'], dtype='object')
+
+# Split the 'Items' column into individual transactions (Lists of items)
+
+# transactions = df['Items'].apply(Lambda x: x.split(',‘')).tolist()
+transactions = df['MILK,BREAD,BISCUIT'].apply(lambda x: x.split(',')).tolist()
+print("\nTransactions:")
+
+print(transactions[:5]) # Show first 5 transactions for simplicity
+
+Transactions:
+
+[
+
+['BREAD', 'MILK', 'BISCUIT', 'CORNFLAKES'], ['BREAD', 'TEA', 'BOURNVITA'], ['JAM', '"MAGGI',
+
+"BREAD', 'MILK'], ['MAGGI', 'TEA', 'BISCUIT'], ['BREAD', ‘TEA’, ‘BOURNVITA']]
+
+# Perform One-Hot Encoding using TransactionEncoder
+encoder = TransactionEncoder()
+onehot = encoder. fit(transactions) .transform(transactions)
+onehot_df = pd.DataFrame(onehot, columns=encoder.columns_)
+
+# Apply the Apriori algorithm with min_support = 0.25
+
+frequent_itemsets = apriori(onehot_df, min_support=@.25, use_colnames=True)
+print("\nFrequent Itemsets:")
+
+print (frequent_itemsets)
+
+Frequent Itemsets:
+
+support itemsets
+@ 6.315789 (BISCUIT)
+1 6.631579 (BREAD)
+2 9.421053 (COFFEE)
+3 0.315789 (CORNFLAKES)
+4 @.263158 (MAGGI )
+5 6.315789 (SUGER)
+6 @.368421 (TEA)
+
+# Find the itemset with the maximum support
+max_support_itemset = frequent_itemsets.loc[frequent_itemsets|[ ‘support' ].idxmax() ]
+
+# Extract the items and their support value
+items = max_support_itemset[ ‘itemsets' ]
+support = max_support_itemset[ ‘support’ ]
+
+print(f"\nItemset with Maximum Support: {items}")
+print(f"Support: {support}")
+
+Itemset with Maximum Support: frozenset({'BREAD'})
+Support: @.631578947368421
+
+from mlxtend.frequent_patterns import association_rules
+
+# Generate association rules
+rules = association_rules(frequent_itemsets, metric="Support", min_threshold=@.25)
+
+# Display the rules
+print("Association Rules:")
+print(rules)
+
+Association Rules:
+
+Empty DataFrame
+
+Columns: [antecedents, consequents, antecedent support, consequent support, support, confidenc
+e, lift, leverage, conviction, zhangs_metric]
+
+Index: []
+bBWNRE ®
+
+BWNEH ®
+
+Assignment 14
+
+Implement Ensemble ML algorithm on Pima Indians Diabetes Database with
+bagging (random forest), boosting, voting and Stacking methods and display
+analysis accordingly. Compare result.
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.preprocessing import StandardScaler
+
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, VotingClassifier, St
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.svm import SVC
+
+from sklearn.metrics import accuracy_score
+
+from sklearn.neighbors import KNeighborsClassifier
+
+from sklearn.tree import DecisionTreeClassifier
+
+# Load and preprocess data
+url = "https://raw.githubusercontent .com/jbrownlee/Datasets/master/pima- indians -diabetes.data
+columns = ['Pregnancies', 'Glucose', 'BloodPressure', ‘SkinThickness', ‘Insulin',
+"BMI', 'DiabetesPedigreeFunction’, ‘Age’, ‘Outcome’ ]
+data = pd.read_csv(url, names=columns)
+
+print (data.head())
+Pregnancies Glucose BloodPressure SkinThickness Insulin BMI \
+6 148 72 35 @ 33.6
+1 85 66 29 @ 26.6
+8 183 64 8 @ 23.3
+1. 89 66 23 94 28.1
+a 137 46 35 168 43.1
+
+DiabetesPedigreeFunction Age Outcome
+
+@.627 58 1
+@.351 31 8
+8.672 32 1
+8.167 21 8
+2.288 33 1
+
+X = data.drop('Outcome', axis=1)
+
+y = data[ ‘Outcome’ ]
+
+X_train, X_test, y_train, y_ test = train_test_split(X, y, test_size=0.3,
+random_state=42, stratify=y)
+
+scaler = StandardScaler()
+
+X_train = scaler. fit_transform(X_train)
+
+X_test = scaler.transform(X_test)
+
+# Define classifiers
+
+rf = RandomForestClassifier(n_estimators=10@, random_state=42)
+
+ada = AdaBoostClassifier(n_estimators=10@, random_state=42)
+
+Ir, svc = LogisticRegression(random_state=42), SVC(probability=True, random_state=42)
+knn, dt = KNeighborsClassifier(), DecisionTreeClassifier(random_state=42)
+
+# Train models
+
+rf.fit(X_train, y_train)
+
+ada.fit(X_train, y_train)
+
+voting hard = VotingClassifier([('1r', Ir), ('’rf', rf), (‘svc', svc)], voting='hard').fit(xX_t
+voting soft = VotingClassifier([(‘1lr', Ir), ('rf', rf), (‘svc', svc)], voting='soft').fit(x_t
+stacking = StackingClassifier([('rf', rf), ('svc', sve), ('knn', knn)],
+final_estimator=LogisticRegression()).fit(X_train, y_train)
+
+# Evaluate models
+models = {'Random Forest’: rf, ‘AdaBoost': ada, ‘Voting Hard': voting_hard,
+"Voting Soft': voting_soft, ‘Stacking': stacking}
+
+for name, model in models.items():
+acc = accuracy_score(y_test, model.predict(X_test))
+print(f"{name} Accuracy: {acc: .4f}")
+
+D: \Anaconda3\Lib\site-packages\sklearn\ensemble\_weight_boosting.py:519: FutureWarning: The SA
+MME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorith
+m to circumvent this warning.
+warnings.warn(
+Random Forest Accuracy: 6.7532
+AdaBoost Accuracy: @.7532
+Voting Hard Accuracy: @.7446
+Voting Soft Accuracy: 0.7489
+Stacking Accuracy: @.7576
+Assignment 15
+
+Create a two layered neural network with relu and sigmoid activation
+function.
+
+import numpy as np
+
+# Activation functions
+def relu(x):
+
+return np.maximum(@, x)
+def sigmoid(x):
+
+return 1 / (1 + np.exp(-x))
+
+# Random weights and biases for two hidden Layers
+W1 = np.random.randn(3, 4)
+
+b1 =np.random.randn(4)
+
+W2 = np.random.randn(4, 3)
+
+b2= np.random.randn(3)
+
+W3 = np.random.randn(3, 1)
+
+b3 = np.random.randn(1)
+
+#Forward pass with two hidden Layers
+
+def forward(X):
+h1 = relu(np.dot(X, W1) + b1) # First hidden Layer
+h2 = relu(np.dot(h1, W2) + b2) # Second hidden Layer
+out = sigmoid(np.dot(h2, W3) + b3) # Output Layer
+return out
+
+X = np.array([[@.1, 0.2, @.3]])
+print("Output:", forward(X))
+
+Output: [[8.6269188] ]
+Assignment 16
+
+Create an ANN and train it on house price dataset classify the house price
+is above average or below average.
+
+import numpy as np
+
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+from sklearn.neural_network import MLPClassifier
+
+from sklearn.metrics import accuracy_score
+
+# Load the California housing dataset
+housing = fetch_california_housing()
+X = housing.data
+
+y = housing. target
+
+print (housing)
+{'data': array([[ 8.3252 > 41. ; 6.98412698, ...,; 2.55555556,
+37.88 » 7122.23 im
+[ &.3014 $ Zhe ‘a 6.23813708, ..., 2.16984183,
+37.86 » 7122.22 1L
+[ 7.2574 $ 52. 4 8.28813559, ..., 2.86225989,
+37.85 » 7122.24 if
+see
+[ 1.7 r 17. i 5.20554273, ..-5 2.3256351 ,
+39.43 jg SEP DE if
+[ 1.8672 > 18. 5 5.32951289, ..., 2.12326917,
+39.43 » 7121.32 i
+[ 2.3886 » 16. 5 5.25471698, ..., 2.61698113,
+39.37 5) UP De ]]), ‘target’: array([4.526, 3.585, 3.521, ..., 0.923, 0.8
+
+47, @.894]), 'frame': None, 'target_names': ['MedHouseVal'], 'feature_names': ['MedInc', ‘Hous
+eAge’, ‘AveRooms', ‘AveBedrms', ‘Population’, ‘AveOccup', ‘Latitude’, ‘Longitude'], '‘DESCR':
+
+'.. -california_housing dataset:\n\nCalifornia Housing dataset\n-------------------------- \n\n
+**Data Set Characteristics: **\n\n:Number of Instances: 2064@\n\n:Number of Attributes: 8 numer
+ic, predictive attributes and the target\n\n:Attribute Information: \n - MedInc media
+n income in block group\n - HouseAge median house age in block group\n ~- AveRooms
+
+average number of rooms per household\n - AveBedrms average number of bedrooms per hous
+ehold\n - Population block group population\n - AveOccup average number of house
+hold members\n - Latitude block group latitude\n - Longitude block group longit
+
+ude\n\n:Missing Attribute Values: None\n\nThis dataset was obtained from the StatLib repositor
+y.\nhttps://www.dcc. fc.up.pt/~ltorgo/Regression/cal_housing.html\n\nThe target variable is the
+median house value for California districts, \nexpressed in hundreds of thousands of dollars
+($100,008).\n\nThis dataset was derived from the 1998 U.S. census, using one row per census\nb
+lock group. A block group is the smallest geographical unit for which the U.S.\nCensus Bureau
+publishes sample data (a block group typically has a population\nof 686 to 3,960 people).\n\nA
+household is a group of people residing within a home. Since the average\nnumber of rooms and
+bedrooms in this dataset are provided per household, these\ncolumns may take surprisingly larg
+e values for block groups with few households\nand many empty houses, such as vacation resort
+s.\n\nIt can be downloaded/loaded using the\n: func: sklearn.datasets.fetch_california_housing™
+function.\n\n.. topic:: References\n\n - Pace, R. Kelley and Ronald Barry, Sparse Spatial A
+utoregressions, \n Statistics and Probability Letters, 33 (1997) 291-297\n'}
+# Convert target into binary classification (above or below average price)
+average _price = np.mean(y)
+y_binary = (y > average_price).astype(int) #1 if above average, @ if below
+
+# Split data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2
+» Pandom_state=42)
+
+# Normalize the features
+
+scaler = StandardScaler()
+
+X_train = scaler. fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Build and train a simple neural network
+
+mlp = MLPClassifier(hidden_layer_sizes=(10, 5), activation='relu', max_iter=500
+» Pandom_state=42)
+
+mlp.fit(X_train, y_train)
+
+# Predict and evaluate
+
+y_pred = mlp.predict(X_test)
+
+accuracy = accuracy_score(y_test, y pred)
+print(f"Test Accuracy: {accuracy: .2f}")
+
+Test Accuracy: 0.88
+Assignment 17
+
+Create a CNN model and train it on mnist handwritten digit dataset. Using
+model find out the digit written by a hand in a given image.
+Import mnist dataset from tensorflow.keras.datasets
+
+import tensorflow as tf
+
+from tensorflow.keras import layers, models
+from tensorflow.keras.datasets import mnist
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+# Load and preprocess MNIST data
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+X_train, x_test = x_train / 255.6, x_test / 255.0 # Normalize
+
+# Expand dimensions to add the channel (for grayscale images)
+x_train = np.expand_dims(x_train, axis=-1)
+x_test = np.expand_dims(x_test, axis=-1)
+
+# Create a simple CNN model
+model = models.Sequential([
+layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+layers .MaxPooling2D((2, 2)),
+layers.Conv2D(64, (3, 3), activation='relu'),
+layers .MaxPooling2D((2, 2)),
+layers.Flatten(),
+layers .Dense(64, activation='relu'),
+layers.Dense(1@, activation='softmax' )
+
+])
+
+# Compile and train the model
+model. compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=[ ‘accuracy’ ])
+model.fit(x_train, y_train, epochs=3, validation_data=(x_test, y_test))
+
+# Predict the digit in a given image
+
+def predict_digit (img):
+img = np.expand_dims(img, axis=(@, -1)) / 255.08 # Preprocess the image
+prediction = model.predict(img)
+return np.argmax( prediction)
+
+# Example usage: Predict digit from x_test[@]
+digit = predict_digit(x_test[@])
+print("Predicted digit:", digit)
+
+# Display the image and predicted digit
+plt.imshow(x_test[@].reshape(28, 28), cmap='gray')
+plt.title(f"Predicted digit: {digit}")
+plt.axis('off')
+
+plt.show()
+Epoch 1/3
+
+1875/1875 13s 6ms/step - accuracy: @.9035 - loss: @.3124 - val_accuracy:
+@.9854 - val_loss: 0.0467
+
+Epoch 2/3
+
+1875/1875 17s 9ms/step - accuracy: 0.9854 - loss: 6.0477 - val_accuracy:
+@.9887 - val_loss: 6.6339
+
+Epoch 3/3
+
+1875/1875 24s 13ms/step - accuracy: @.9913 - loss: @.@289 - val_accuracy:
+@.9837 - val_loss: 0.0507
+
+WARNING: tensorflow:5 out of the last 5 calls to <function TensorFlowTrainer.make_predict_funct
+ion.<locals>.one_step_on_data_distributed at @x@@000177BC9E266@> triggered tf.function retraci
+ng. Tracing is expensive and the excessive number of tracings could be due to (1) creating @t
+f.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python
+objects instead of tensors. For (1), please define your @tf.function outside of the loop. For
+(2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For
+(3), please refer to https://www.tensorflow.org/guide/function#controlling retracing and http
+s://www.tensorflow.org/api_docs/python/tf/function for more details.
+
+1/1 @s 143ms/step
+
+Predicted digit: 1
+
+Predicted digit: 1
+
+Assignment 18
+
+Create RNN model and analyze the Google stock price dataset. Find out
+increasing or decreasing trends of stock price for the next day.
+
+import pandas as pd
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+
+from keras.layers import Dense, LSTM
+
+dataset = pd.read_csv('Google_Stock_Price_Train.csv')
+
+# Use the ‘Open’ price as the feature for simplicity
+training_set = dataset['Open'].values.reshape(-1, 1)
+
+# 2. Feature Scaling
+scaler = MinMaxScaler(feature_range=(@, 1))
+scaled_training_set = scaler.fit_transform(training_set)
+
+# 3. Create the data structure with 6@ time steps and 1 output
+
+X_train = []
+
+y_train = []
+
+for i in range(60, len(scaled_training_set)):
+X_train.append(scaled_training_set[i-60:i, 0])
+y_train.append(scaled_training set[i, ®])
+
+X_train, y_train = np.array(X_train), np.array(y_train)
+
+# Reshape input to be 3D [samples, time steps, features]
+X_train = X_train.reshape(X_train.shape[@], X_train.shape[1], 1)
+
+# 4. Build the RNN model
+model = Sequential()
+
+model.add(LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1)))
+model. add(Dense(units=50) )
+
+model.add(LSTM(units=58, return_sequences=False) )
+model .add(Dense(units=25))
+
+model. add(Dense(units=1) )
+model.compile(optimizer='adam', loss='mean_squared_error' )
+
+model.fit(X_train, y_train, epochs=590, batch_size=32)
+
+#5. Test the model on new data (e.g., the test set or the next day's price)
+# For testing purposes, make predictions on the training set itself
+predicted_stock_price = model.predict(X_train)
+
+predicted_stock_price = scaler.inverse_transform(predicted_stock_price)
+
+# Visualize the results
+plt.plot(training_ set, color='red', label='Real Google Stock Price’)
+plt.plot(predicted_stock_price, color="blue’, label='Predicted Google Stock Price')
+plt.title('Google Stock Price Prediction’ )
+
+plt.xlabel('Time')
+
+plt.ylabel('Google Stock Price')
+
+plt.legend()
+
+plt.show()
+
+38/38 4s 72ms/step
+Google Stock Price Prediction
+
+— Real Google Stock Price
+— Predicted Google Stock Price
+
+800-7
+
+700 +
+
+600-5
+
+500 5
+
+Google Stock Price
+
+400 +
+
+300 5
+
+T T T T T T
+a) 200 400 600 800 1000 1200
+Time
